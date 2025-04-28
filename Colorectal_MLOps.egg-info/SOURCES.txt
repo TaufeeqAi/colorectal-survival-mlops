@@ -1,3 +1,4 @@
+README.md
 setup.py
 Colorectal_MLOps.egg-info/PKG-INFO
 Colorectal_MLOps.egg-info/SOURCES.txt
@@ -6,5 +7,6 @@ Colorectal_MLOps.egg-info/requires.txt
 Colorectal_MLOps.egg-info/top_level.txt
 kubeflow_pipeline/__init__.py
 src/__init__.py
+src/data_processing.py
 src/exception.py
 src/logger.py
