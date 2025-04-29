@@ -7,6 +7,14 @@ from sklearn.metrics import accuracy_score,precision_score,recall_score,f1_score
 from src.logger import get_logger
 from src.exception import CustomException
 
+import mlflow
+import mlflow.sklearn
+
+import dagshub
+dagshub.init(repo_owner='TaufeeqAi', repo_name='colorectal-survival-mlops', mlflow=True)
+
+
+
 logger= get_logger(__name__)
 
 class ModelTraining:
@@ -53,9 +61,15 @@ class ModelTraining:
             recall = recall_score(self.y_test, y_pred, average= "weighted")
             f1 = f1_score(self.y_test, y_pred, average= "weighted")
 
+            mlflow.log_metric("Accuracy",accuracy)
+            mlflow.log_metric("Precision",precision)
+            mlflow.log_metric("Recall",recall)
+            mlflow.log_metric("F1-Score",f1)
+
             logger.info(f"Accuracy: {accuracy}, Precision ={precision}, recall={recall}, f1_score={f1}")
 
             roc_auc = roc_auc_score(self.y_test,y_prob)
+            mlflow.log_metric("ROC-AOC",roc_auc)
             logger.info(f"ROC-AUC score: {roc_auc}")
 
             logger.info("Model Evaluation Completed...")
@@ -71,6 +85,6 @@ class ModelTraining:
 
 
 if __name__== "__main__":
-
-    pipeline= ModelTraining()
-    pipeline.initiate_model_training_eval()
+    with mlflow.start_run():
+        pipeline= ModelTraining()
+        pipeline.initiate_model_training_eval()

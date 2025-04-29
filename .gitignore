@@ -2,3 +2,4 @@ venv/
 Colorectal_MLOps.egg-info/
 logs/
 Colorectal_MLOps.egg-info/SOURCES.txt
+mlruns/
