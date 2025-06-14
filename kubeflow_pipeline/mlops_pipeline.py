@@ -9,14 +9,14 @@ import kfp.compiler.compiler
 def data_processing_ops():
     return dsl.ContainerOp(
         name= "Data Processing",
-        image="taufeeqai/my-mlops-app:latest",
+        image="taufeeqai/my-project-app:latest",
         command = ["python","src/data_processing.py"]
     )
 
 def model_training_ops():
     return dsl.ContainerOp(
         name= "Model Training",
-        image="taufeeqai/my-mlops-app:latest",
+        image="taufeeqai/my-project-app:latest",
         command = ["python","src/model_trainer.py"]
     )
 

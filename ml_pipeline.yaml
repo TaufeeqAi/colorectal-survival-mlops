@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
   generateName: ml-pipeline-
-  annotations: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.22, pipelines.kubeflow.org/pipeline_compilation_time: '2025-04-29T11:16:29.498684',
+  annotations: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.22, pipelines.kubeflow.org/pipeline_compilation_time: '2025-04-30T01:19:41.927114',
     pipelines.kubeflow.org/pipeline_spec: '{"description": "Colorectal cancer patient
       survival prediction kubeflow pipeline", "name": "ML Pipeline"}'}
   labels: {pipelines.kubeflow.org/kfp_sdk_version: 1.8.22}
@@ -12,7 +12,7 @@ spec:
   - name: data-processing
     container:
       command: [python, src/data_processing.py]
-      image: taufeeqai/my-mlops-app:latest
+      image: taufeeqai/my-project-app:latest
     metadata:
       labels:
         pipelines.kubeflow.org/kfp_sdk_version: 1.8.22
@@ -28,7 +28,7 @@ spec:
   - name: model-training
     container:
       command: [python, src/model_trainer.py]
-      image: taufeeqai/my-mlops-app:latest
+      image: taufeeqai/my-project-app:latest
     metadata:
       labels:
         pipelines.kubeflow.org/kfp_sdk_version: 1.8.22
